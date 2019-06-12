@@ -49,13 +49,11 @@ import java.util.Scanner;
 
 public class SimpleNotePad extends JFrame implements ActionListener{
 
-	// Creating my Arraylist to keep the files 
+	//Arraylist which will keeps all my files 
 
 	ArrayList<JMenuItem> rFile =new ArrayList<JMenuItem>();
 
-	
-
-	// Creating button
+	// Creation of all the Menu botton 
 	JTextArea textInput;
 
 	JMenuBar barMenu = new JMenuBar();
@@ -86,12 +84,7 @@ public class SimpleNotePad extends JFrame implements ActionListener{
 
 
 
-
-
-
 	private Object textArea;
-
-
 
 	private SimpleNotePad() {
 
@@ -116,9 +109,7 @@ public class SimpleNotePad extends JFrame implements ActionListener{
 		fileMenu.add(openRecent); 
 
 		fileMenu.addSeparator();  
-
-
-		//editMenu.add(undoMenu);
+		
 		editMenu.add(ReplaceMenu);
 
 		editMenu.add(pasteMenu);
@@ -200,9 +191,6 @@ public class SimpleNotePad extends JFrame implements ActionListener{
 	private void pasteImplementation() {
 
 		StyledDocument doc = noteArea.getStyledDocument();
-
-		//Position position = doc.getEndPosition();
-
 		noteArea.paste();	
 
 	}
@@ -211,16 +199,20 @@ public class SimpleNotePad extends JFrame implements ActionListener{
 
 	@Override
 
-	// EveryTime there is a button clicked , it checks here
+	// All the botton fonctionality 
 
 	public void actionPerformed(ActionEvent event) {
 
+		//new btn
 		if(event.getActionCommand().equals("new")) {
 
 			noteArea.setText("");
 
 		}
-
+		
+		
+		// save btn
+		
 		else if(event.getActionCommand().equals("save")) { 	
 
 			File fileToWrite = null;
@@ -262,7 +254,8 @@ public class SimpleNotePad extends JFrame implements ActionListener{
 
 
 			}
-
+		// print btn
+			
 		}else if(event.getActionCommand().equals("print")) { 	
 
 			try{
@@ -318,7 +311,8 @@ public class SimpleNotePad extends JFrame implements ActionListener{
 			}	
 
 	
-
+		//replace btn
+		
 		else if(event.getActionCommand().equals("replace")) {
 			//pasteImplementation();
 			
@@ -337,7 +331,7 @@ public class SimpleNotePad extends JFrame implements ActionListener{
 			} 
 
 		}}
-
+		//past btn
 		else if(event.getActionCommand().equals("paste")) { 
 
 			pasteImplementation();
@@ -353,7 +347,7 @@ public class SimpleNotePad extends JFrame implements ActionListener{
 			}
 
 		}
-
+		//open btn
 		else if(event.getActionCommand().equals("Open File")) {
 
 			JFileChooser open = new JFileChooser();  
@@ -399,7 +393,7 @@ public class SimpleNotePad extends JFrame implements ActionListener{
 		}
 
 		else {
-
+			//recent file
 			for(JMenuItem recent : rFile) {
 
 				if(event.getActionCommand().equals(recent.getText())) {
